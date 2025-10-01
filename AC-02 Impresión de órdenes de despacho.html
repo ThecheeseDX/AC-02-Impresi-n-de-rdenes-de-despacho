@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órdenes de Despacho - Veggie.cl</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .order-list {
+            margin-bottom: 30px;
+        }
+        .order-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .order-info {
+            flex-grow: 1;
+        }
+        .order-number {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .order-time {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .order-status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .status-ready {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .reprint-btn {
+            background-color: #27ae60;
+        }
+        .reprint-btn:hover {
+            background-color: #219652;
+        }
+        .print-notice {
+            background-color: #e8f4fd;
+            border: 1px solid #3498db;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Órdenes de Despacho - Veggie.cl</h1>
+        
+        <div class="print-notice">
+            <strong>Las órdenes se imprimen automáticamente al confirmarse el pago</strong>
+        </div>
+        
+        <div class="order-list">
+            <div class="order-item">
+                <div class="order-info">
+                    <div class="order-number">Orden #2025-003</div>
+                    <div class="order-time">Hora: 15:45</div>
+                    <div>2x Buddha Bowl, 1x Smoothie Verde</div>
+                </div>
+                <div class="order-status status-pending">Pendiente</div>
+                <button class="reprint-btn">Reimprimir</button>
+            </div>
+            
+            <div class="order-item">
+                <div class="order-info">
+                    <div class="order-number">Orden #2025-002</div>
+                    <div class="order-time">Hora: 15:20</div>
+                    <div>1x Wrap de Falafel, 1x Agua de Coco</div>
+                </div>
+                <div class="order-status status-ready">Lista</div>
+                <button class="reprint-btn">Reimprimir</button>
+            </div>
+            
+            <div class="order-item">
+                <div class="order-info">
+                    <div class="order-number">Orden #2025-001</div>
+                    <div class="order-time">Hora: 14:30</div>
+                    <div>3x Hamburguesa de Lentejas, 2x Té Chai</div>
+                </div>
+                <div class="order-status status-completed">Completada</div>
+                <button class="reprint-btn">Reimprimir</button>
+            </div>
+
+            <div class="order-item">
+                <div class="order-info">
+                    <div class="order-number">Orden #2025-004</div>
+                    <div class="order-time">Hora: 16:05</div>
+                    <div>1x Quinoa Bowl, 1x Jugo de Zanahoria</div>
+                </div>
+                <div class="order-status status-pending">Pendiente</div>
+                <button class="reprint-btn">Reimprimir</button>
+            </div>
+        </div>
+        
+        <div id="message" style="display: none; padding: 15px; background-color: #d4edda; color: #155724; border-radius: 4px; text-align: center;"></div>
+    </div>
+
+    <script>
+        // Simular reimpresión de órdenes
+        document.querySelectorAll('.reprint-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderItem = this.closest('.order-item');
+                const orderNumber = orderItem.querySelector('.order-number').textContent;
+                const messageDiv = document.getElementById('message');
+                
+                messageDiv.textContent = `Reimprimiendo ${orderNumber}...`;
+                messageDiv.style.display = 'block';
+                messageDiv.style.backgroundColor = '#d4edda';
+                messageDiv.style.color = '#155724';
+                
+                // Simular tiempo de impresión
+                setTimeout(() => {
+                    messageDiv.textContent = `${orderNumber} impresa correctamente`;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
